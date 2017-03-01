@@ -113,7 +113,7 @@ public class Bot {
         }
         else {
             message.append("FAILED:\n")
-                        .append(((Map<String, Object>) response.getEntity()).get("errors"))
+                        .append(((Map) response.getEntity()).get("errors"))
                         .append("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
         }
         event.fire(message.toString());

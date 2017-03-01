@@ -240,11 +240,11 @@
                     <version>${version.war.plugin}</version>
                     <configuration>
                     	<failOnMissingWebXml>false</failOnMissingWebXml>
-                        <archive>
+                        <!--<archive>
                             <manifestEntries>
                                 <Dependencies>org.jboss.as.naming,org.jboss.as.server,org.jboss.msc</Dependencies>
                             </manifestEntries>
-                        </archive>
+                        </archive>-->
                     </configuration>
                 </plugin>
 
