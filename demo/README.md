@@ -31,7 +31,7 @@ Before building and running TicketMonster, you must generate the administration 
 
 4. Deployment to JBoss EAP 7.0 is optional. The project can be built and deployed to a running instance of JBoss EAP through the following command in JBoss Forge:
 
-	    $ build clean package jboss-as:deploy
+	    $ build clean package wildfly:deploy
 
 ## Building TicketMonster
 
@@ -82,7 +82,7 @@ You can run TicketMonster into a local JBoss EAP 7.0 instance or on OpenShift.
 1. Make sure you have started the JBoss Server as described above.
 2. Type this command to build and deploy the archive into a running server instance.
 
-        mvn clean package jboss-as:deploy
+        mvn clean package wildfly:deploy
 	
 	(You can use the `arq-remote` profile for running tests as well)
 

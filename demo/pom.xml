@@ -216,7 +216,7 @@
             fine tuning the content of the JSON responses -->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-jackson-provider</artifactId>
+            <artifactId>resteasy-jackson2-provider</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -249,7 +249,7 @@
                 </plugin>
 
                 <!-- The JBoss AS plugin deploys your war to a local JBoss AS container -->
-                <!-- To use run: mvn package jboss-as:deploy -->
+                <!-- To use run: mvn package wildfly:deploy -->
                 <plugin>
                     <groupId>org.wildfly.plugins</groupId>
                     <artifactId>wildfly-maven-plugin</artifactId>
