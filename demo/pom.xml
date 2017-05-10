@@ -4,7 +4,8 @@
     <parent>
         <groupId>org.jboss</groupId>
         <artifactId>jboss-parent</artifactId>
-        <version>22</version>
+        <version>23</version>
+        <relativePath/>
     </parent>
     <groupId>org.jboss.examples</groupId>
     <artifactId>ticket-monster</artifactId>
@@ -13,42 +14,7 @@
     <name>ticket-monster</name>
     <description>A starter HTML5 + REST webapp project for use on JBoss EAP.</description>
 
-    <!-- Activate JBoss Product Maven repository.
-
-        NOTE: Configuring the Maven repository in the pom.xml file is not a recommended procedure
-        and is only done here to make it easier to use the quickstarts.
-
-        For more information about how to configure Maven for your application,
-        see the section entitled 'Use the Maven Repository'
-        in the Development Guide for JBoss EAP 6 located here:
-
-        https://access.redhat.com/documentation/en-US/JBoss_Enterprise_Application_Platform/6.3/html-single/Development_Guide
-    -->
-    <repositories>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>jboss-enterprise-maven-repository</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>jboss-enterprise-maven-repository</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-        </pluginRepository>
-    </pluginRepositories>
+   
 
     <properties>
         <!-- Explicitly declaring the source encoding eliminates the following 
@@ -69,7 +35,7 @@
             line below to use version 1.0.4.Final-redhat-9 which is a release certified 
             to work with JBoss EAP 7.0. It requires you have access to the JBoss EAP 6.2
             maven repository. -->
-        <version.jboss.bom.eap>7.0.4.GA</version.jboss.bom.eap>
+        <version.wildfly.bom>10.1.1.Final</version.wildfly.bom>
     </properties>
 
     <dependencyManagement>
@@ -82,9 +48,9 @@
                 tools for your project, such as Arquillian for testing),
                 -->
             <dependency>
-                <groupId>org.jboss.bom</groupId>
-                <artifactId>jboss-eap-javaee7-with-tools</artifactId>
-                <version>${version.jboss.bom.eap}</version>
+                <groupId>org.wildfly.bom</groupId>
+               <artifactId>wildfly-javaee7-with-tools</artifactId>
+                <version>${version.wildfly.bom}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -248,7 +214,7 @@
                     </configuration>
                 </plugin>
 
-                <!-- The JBoss AS plugin deploys your war to a local JBoss AS container -->
+                <!-- The JBoss AS plugin deploys your war to a local Server container -->
                 <!-- To use run: mvn package wildfly:deploy -->
                 <plugin>
                     <groupId>org.wildfly.plugins</groupId>

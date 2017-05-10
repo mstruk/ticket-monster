@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 import org.jboss.examples.ticketmonster.model.Show;
 
 /**
- * A read-only REST resource that provides a collection of metrics for shows occuring in the future. Updates to metrics via
+ * A read-only REST resource that provides a collection of metrics for shows occurring in the future. Updates to metrics via
  * POST/PUT etc. are not allowed, since they are not meant to be computed by consumers.
  * 
  * @author Vineet Reynolds
@@ -57,7 +56,7 @@ public class MetricsService {
 
     private List<ShowMetric> retrieveMetricsFromShows(List<Show> shows,
         Map<Long, Long> occupiedCounts) {
-        List<ShowMetric> metrics = new ArrayList<ShowMetric>();
+        List<ShowMetric> metrics = new ArrayList<>();
         for (Show show : shows) {
             metrics.add(new ShowMetric(show, occupiedCounts));
         }
@@ -71,11 +70,11 @@ public class MetricsService {
     }
 
     private Map<Long, Long> retrieveOccupiedCounts() {
-        Map<Long, Long> occupiedCounts = new HashMap<Long, Long>();
+        Map<Long, Long> occupiedCounts = new HashMap<>();
 
-        Query occupiedCountsQuery = entityManager
+        TypedQuery<Object[]> occupiedCountsQuery = entityManager
             .createQuery("select b.performance.id, SIZE(b.tickets) from Booking b "
-                + "WHERE b.performance.date > current_timestamp GROUP BY b.performance.id");
+                + "WHERE b.performance.date > current_timestamp GROUP BY b.performance.id", Object[].class);
 
         List<Object[]> results = occupiedCountsQuery.getResultList();
         for (Object[] result : results) {
